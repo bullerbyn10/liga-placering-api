@@ -2,11 +2,12 @@ from fastapi import FastAPI, Query
 from fastapi.responses import JSONResponse
 import requests
 import json
+import os
 
 # =============================
 # CONFIG
 # =============================
-API_TOKEN = "b12813bbc3464ec5995564621fcb1463"
+API_TOKEN = os.getenv("API_TOKEN")
 BASE_URL = "https://api.football-data.org/v4"
 
 app = FastAPI(title="Football Match Importance API",
