@@ -3,6 +3,8 @@ from fastapi.responses import JSONResponse
 import requests
 import json
 import os
+from fastapi.middleware.cors import CORSMiddleware
+
 
 # =============================
 # CONFIG
@@ -13,8 +15,17 @@ BASE_URL = "https://api.football-data.org/v4"
 app = FastAPI(title="Football Match Importance API",
               description="Calculates match importance based on standings from football-data.org",
               version="1.0.0")
+# =============================
+# CORS MIDDLEWARE
+# =============================
 
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # eller ["https://figma.com", "https://your-app.render.com"]
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 # =============================
 # HELPER FUNCTIONS
 # =============================
